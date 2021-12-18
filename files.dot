@@ -1,0 +1,118 @@
+digraph files {
+  node [peripheries = 1]
+
+  "hsl2hsv.m"
+  "colorize.m"
+  "coarse.png"
+  "fine.png"
+
+  "basis.png"
+  "large.png"
+  "small.png"
+  "composite.png"
+  "large-smooth.png"
+  "composite-smooth-simplified.png"
+  "composite-smooth-thresholded.png"
+
+  "logo.svg"
+  "logo-sharp.png"
+  "logo-sharp-simplified.png"
+  "logo-sharp-thresholded.png"
+  "logo-smooth.png"
+  "logo-smooth-simplified.png"
+  "logo-smooth-thresholded.png"
+
+  "animate.m"
+  "logo-sharp-powered.webm"
+  "logo-smooth-powered.webm"
+
+  node [peripheries = 2]
+
+  "coarse.ppm"
+  "fine.ppm"
+
+  "composite-smooth.png"
+
+  "logo-sharp.svg"
+  "logo-sharp-powered.svg"
+  "logo-sharp-simplified.svg"
+  "logo-sharp-thresholded.svg"
+  "logo-smooth.svg"
+  "logo-smooth-powered.svg"
+  "logo-smooth-simplified.svg"
+  "logo-smooth-thresholded.svg"
+
+  node [peripheries = 0]
+
+  subgraph cluster_colors {
+    "hsl2hsv.m" -> "coarse.ppm"
+    "hsl2hsv.m" -> "fine.ppm"
+    "colorize.m" -> "coarse.ppm"
+    "colorize.m" -> "fine.ppm"
+
+    "coarse.ppm" -> "coarse.png"
+    "fine.ppm" -> "fine.png"
+  }
+
+  subgraph cluster_rasters {
+    "basis.png" -> "composite.png"
+    "large.png" -> "composite.png"
+    "small.png" -> "composite.png"
+    "large.png" -> "large-smooth.png"
+    "basis.png" -> "composite-smooth.png"
+    "large-smooth.png" -> "composite-smooth.png"
+    "small.png" -> "composite-smooth.png"
+
+    "composite-smooth.png" -> "composite-smooth-simplified.png"
+    "composite-smooth.png" -> "composite-smooth-thresholded.png"
+  }
+
+  subgraph cluster_vectors {
+    "logo.svg" -> "logo-sharp.svg"
+    "logo-sharp.svg" -> "logo-smooth.svg"
+    "logo-sharp.svg" -> "logo-sharp-simplified.svg"
+    "logo-sharp.svg" -> "logo-sharp-thresholded.svg"
+    "logo-smooth.svg" -> "logo-smooth-simplified.svg"
+    "logo-smooth.svg" -> "logo-smooth-thresholded.svg"
+
+    "logo-sharp.svg" -> "logo-sharp.png"
+    "logo-smooth.svg" -> "logo-smooth.png"
+    "logo-sharp-simplified.svg" -> "logo-sharp-simplified.png"
+    "logo-sharp-thresholded.svg" -> "logo-sharp-thresholded.png"
+    "logo-smooth-simplified.svg" -> "logo-smooth-simplified.png"
+    "logo-smooth-thresholded.svg" -> "logo-smooth-thresholded.png"
+  }
+
+  subgraph cluster_animations {
+    // "animate.m" -> "logo-sharp-powered.svg"
+    // "animate.m" -> "logo-smooth-powered.svg"
+    // "logo-sharp-powered.svg" -> "logo-sharp-powered.webm"
+    // "logo-smooth-powered.svg" -> "logo-smooth-powered.webm"
+
+    edge [dir = back]
+
+    "logo-sharp-powered.svg" -> "animate.m"
+    "logo-smooth-powered.svg" -> "animate.m"
+    "logo-sharp-powered.webm" -> "logo-sharp-powered.svg"
+    "logo-smooth-powered.webm" -> "logo-smooth-powered.svg"
+  }
+
+  "fine.ppm" -> "basis.png"
+  "fine.ppm" -> "large.png"
+  "fine.ppm" -> "small.png"
+  "composite.png" -> "logo.svg"
+  // "logo-sharp.svg" -> "logo-sharp-powered.svg"
+  // "logo-smooth.svg" -> "logo-smooth-powered.svg"
+
+  edge [dir = back]
+
+  "logo-sharp-powered.svg" -> "logo-sharp.svg"
+  "logo-smooth-powered.svg" -> "logo-smooth.svg"
+
+  edge [style = invis]
+
+  "animate.m" -> "logo.svg"
+  "composite-smooth-thresholded.png" -> "logo.svg"
+  "fine.png" -> "large.png"
+  "fine.ppm" -> "logo-sharp-powered.webm"
+}
