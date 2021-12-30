@@ -60,7 +60,7 @@
         <dc:title>Hacklab Jyväskylä Logo</dc:title>
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
-        <dc:date>2021-11-16</dc:date>
+        <dc:date>2021-12-31</dc:date>
         <dc:creator>
           <cc:Agent>
             <dc:title>Sampsa Kiiskinen</dc:title>
@@ -71,7 +71,7 @@
             <dc:title>Members of Hacklab Jyväskylä</dc:title>
           </cc:Agent>
         </dc:contributor>
-        <dc:description>This file was written by hand and previewed with Inkscape. The fractions in the source code approximate `4 * sqrt (2) - 5` and `6 - 4 * sqrt (2)`.</dc:description>
+        <dc:description>This file was written by hand and previewed with Inkscape. The fractions in the source code are approximations of `4 * sqrt (2) - 5` and `6 - 4 * sqrt (2)`.</dc:description>
       </cc:Work>
       <cc:License
          rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
